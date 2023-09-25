@@ -5,48 +5,69 @@ let systemInput;
 function computerChoice() {
     let weaponChoice = ["Rock", "Paper", "Scissor"];
     systemInput = Math.floor(Math.random() * weaponChoice.length);
-    let choice = weaponChoice[systemInput];
+    let choice = weaponChoice[systemInput].toUpperCase();
     return choice;
 }
+let userWeapon;
+function userChoice() {
 
+    userWeapon = prompt("Enter your Weapon of Choice: ");
+    userWeapon = userWeapon.toUpperCase();
+    return userWeapon;
+}
 
-let userInput = prompt("Enter your Weapon of Choice: ");
-
-
-console.log(userInput);
+let userScore=0,computerScore=0;
 
 function RPS(system, user) {
 
     if (system === user) {
         console.log("match Tie, Try again");
-    } else if (system === "Rock" && user === "Scissor") {
-        console.log("Computer wins, you loose");
+    } else if (system === "ROCK" && user === "SCISSOR") {
+        console.log(`Computer wins, ${system} beats ${user}`);
+        computerScore += 1;
+    }
+    else if (system === "PAPER" && user === "ROCK") {
+
+        console.log(`Computer wins, ${system} beats ${user}`);
+        computerScore += 1;
+    } else if (system === "SCISSOR" && user === "PAPER") {
+
+        console.log(`Computer wins, ${system} beats ${user}`);
+        computerScore += 1;
+
+    } else if (system === "SCISSOR" && user === "ROCK") {
+        console.log(`You are a winner,${user} beats ${system}`);
+        userScore += 1;
 
     }
-    else if (system === "Paper" && user === "Rock") {
+    else if (system === "PAPER" && user === "SCISSOR") {
 
-        console.log("Computer wins, you loose");
-    } else if (system === "Scissor" && user === "Paper") {
-
-        console.log("Computer wins, you loose");
-
-    } else if (system === "Scissor" && user === "Rock") {
-        console.log("You are a winner, keep going");
-
+        console.log(`You are a winner,${user} beats ${system}`);
+        userScore += 1;
     }
-    else if (system === "Paper" && user === "Scissor") {
+    else if (system === "ROCK" && user === "PAPER") {
+        console.log(`You are a winner,${user} beats ${system}`);
+        userScore += 1;
 
-        console.log("You are a winner, keep going");
-    }
-    else if (system === "Rock" && user === "Paper") {
-        console.log("You are a winner, keep going");
     }
     else {
-        console.log("Incorrect input, try again")
+        console.log("Incorrect input, try again");
     }
 }
 
-let computer = computerChoice();
-console.log(computer);
 
-console.log(RPS(computer, userInput));
+function game() {
+    
+    for (let i = 1; i <= 5; i++) {
+        let user = userChoice();
+        let computer = computerChoice();
+        RPS(computer, user);
+        gameResult = computerScore > userScore ? "computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
+    }
+    console.log(userScore,computerScore);
+    return gameResult;
+    
+    
+}
+
+console.log(game());
