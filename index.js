@@ -1,21 +1,14 @@
 
 
-
 let systemInput;
 
-let weaponChoice = ["Rock", "Paper", "Scissor"];
 function computerChoice() {
+    let weaponChoice = ["Rock", "Paper", "Scissor"];
     systemInput = Math.floor(Math.random() * weaponChoice.length);
     let choice = weaponChoice[systemInput].toUpperCase();
     return choice;
 }
-let userWeapon;
-function userChoice() {
 
-    userWeapon = "Enter your Weapon of Choice: ";
-    userWeapon = userWeapon.toUpperCase();
-    return userWeapon;
-}
 
 let userScore=0,computerScore=0;
 
@@ -52,37 +45,52 @@ function RPS(system, user) {
 
     }
     else {
-        console.log("Incorrect input, try again");
+        return null;
     }
 }
 
 
-function game() {
-    
-        let user = userChoice();
-        let computer = computerChoice();
-        RPS(computer, user);
-        gameResult = computerScore > userScore ? "computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
+
+
+let userWeapon;
+
+const btn1 = document.getElementById('btn1').addEventListener('click',function(){
+    userWeapon = 'Rock';
+    userWeapon = userWeapon.toUpperCase();
+    console.log(userWeapon);
+    game();
     console.log(userScore,computerScore);
-    return gameResult;
-    
-    
+
+});
+const btn2 = document.getElementById('btn2').addEventListener('click',function(){
+    userWeapon = 'Paper';
+    userWeapon = userWeapon.toUpperCase();
+    console.log(userWeapon);
+    game();
+    console.log(userScore,computerScore);
+
+});
+const btn3 = document.getElementById('btn3').addEventListener('click',function(){
+    userWeapon = 'Scissor';
+    userWeapon = userWeapon.toUpperCase();
+    console.log(userWeapon);
+    game();
+    console.log(userScore,computerScore);
+
+
+});
+
+function game() {
+
+    let user = userWeapon;
+    let computer = computerChoice();
+    RPS(computer, user);
+    let gameResult = computerScore > userScore ? "Computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
+return gameResult;
+
+
 }
 
+game();
 
 
-
-console.log(game());
-
-
-
-const btn1 = document.getElementById('#btn1');
-const btn2 = document.getElementById('#btn2');
-const btn3 = document.getElementById('#btn3');
-
-
-
-btn1.addEventListener('click',function(){
-    userWeapon('Rock');
-    console.log(userWeapon);
-});
