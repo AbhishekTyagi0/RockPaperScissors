@@ -1,9 +1,10 @@
 
 
+
 let systemInput;
 
+let weaponChoice = ["Rock", "Paper", "Scissor"];
 function computerChoice() {
-    let weaponChoice = ["Rock", "Paper", "Scissor"];
     systemInput = Math.floor(Math.random() * weaponChoice.length);
     let choice = weaponChoice[systemInput].toUpperCase();
     return choice;
@@ -11,7 +12,7 @@ function computerChoice() {
 let userWeapon;
 function userChoice() {
 
-    userWeapon = prompt("Enter your Weapon of Choice: ");
+    userWeapon = "Enter your Weapon of Choice: ";
     userWeapon = userWeapon.toUpperCase();
     return userWeapon;
 }
@@ -58,16 +59,30 @@ function RPS(system, user) {
 
 function game() {
     
-    for (let i = 1; i <= 5; i++) {
         let user = userChoice();
         let computer = computerChoice();
         RPS(computer, user);
         gameResult = computerScore > userScore ? "computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
-    }
     console.log(userScore,computerScore);
     return gameResult;
     
     
 }
 
+
+
+
 console.log(game());
+
+
+
+const btn1 = document.getElementById('#btn1');
+const btn2 = document.getElementById('#btn2');
+const btn3 = document.getElementById('#btn3');
+
+
+
+btn1.addEventListener('click',function(){
+    userWeapon('Rock');
+    console.log(userWeapon);
+});
