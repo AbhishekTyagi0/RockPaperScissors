@@ -13,6 +13,7 @@ function computerChoice() {
     return choice;
 }
 
+let userScore = 0, computerScore = 0;
 
 
 function RPS(system, user) {
@@ -103,23 +104,24 @@ const btn3 = document.getElementById('btn3').addEventListener('click', function 
 
 function game() {
 
-    let userScore = 0, computerScore = 0;
 
-    // while (userScore < 5 && computerScore < 5) {
 
         let user = userWeapon;
         let computer = computerChoice();
         RPS(computer, user);
-        let gameResult = computerScore > userScore ? "Computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
+        
+        if (userScore >= 5 || computerScore >= 5) {
 
+        let gameResult = computerScore > userScore ? "Computer is a winner" : computerScore === userScore ? "Match tie" : "You are winner";
         const gameWinner = document.querySelector('.result');
         gameWinner.innerText = `Match Result: ${gameResult}`;
+        }
 
+        else{
 
-
+            document.querySelector('.score').innerText = `Your Score is: ${userScore}\n Computer Score is: ${computerScore}`;
+        }
         
-    // }
-    document.querySelector('.score').innerText = `Your Score is: ${userScore}\n Computer Score is: ${computerScore}`;
 
 }
 game();
